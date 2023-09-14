@@ -2,7 +2,7 @@ const database = require("./database");
 
   const getUser = (req, res) => {
     database
-    .query("select * from users")
+    .query("select * from user")
     .then(([user]) => {
       res.json(user);
     })
@@ -31,10 +31,13 @@ const database = require("./database");
   };
 
   const postUserCreation = (req, res) => {
-    // const { firstname, lastname } = req.body;
+    const { FirstName, LastName } = req.body;
 
     database
-      .query("INSERT INTO users (firstname, lastname) VALUES (?, ?)")
+      .query(
+        "INSERT INTO user(FirstName, LastName) VALUES (?, ?)",
+        [FirstName, LastName]
+      )
       .then((result) => {
         const userId = result.insertId;
         res.status(201).json({ id: userId, message: "User created successfully"});
