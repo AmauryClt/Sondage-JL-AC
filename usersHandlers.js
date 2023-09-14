@@ -1,4 +1,4 @@
-const database = require("./sondage");
+const database = require("./database");
 
   const getUser = (req, res) => {
     database
@@ -34,7 +34,7 @@ const database = require("./sondage");
     // const { firstname, lastname } = req.body;
 
     database
-      .query("INSERT INTO users (firstname, lastname")
+      .query("INSERT INTO users (firstname, lastname) VALUES (?, ?)")
       .then((result) => {
         const userId = result.insertId;
         res.status(201).json({ id: userId, message: "User created successfully"});
