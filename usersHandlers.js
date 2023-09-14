@@ -1,7 +1,17 @@
-const database = require("./sondageJLAC");
-  const getUser = (req, res) => {
+const database = require("./sondage");
 
-  }
+  const getUser = (req, res) => {
+    database
+    .query("select * from users")
+    .then(([user]) => {
+      res.json(user);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error retrieving data from database");
+    });
+  };
+
   const getUserById = (req, res) => {
     const id = parseInt(req.params.id);
   

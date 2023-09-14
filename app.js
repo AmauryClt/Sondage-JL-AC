@@ -21,10 +21,13 @@ const welcome = (req, res) => {
 
 app.get("/", welcome);
 
-const movieHandlers = require("./movieHandlers");
 
-app.get("/api/movies", movieHandlers.getMovies);
-app.get("/api/movies/:id", movieHandlers.getMovieById);
+const usersHandlers = require("./usersHandlers");
+
+
+app.get("/api/user", usersHandlers.getUser);
+app.get("/api/user/:id", usersHandlers.getUserById);
+app.post("/api/user", usersHandlers.postUserCreation);
 
 app.listen(port, (err) => {
   if (err) {
