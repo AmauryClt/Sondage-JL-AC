@@ -16,10 +16,10 @@ const database = require("./database");
     const id = parseInt(req.params.id);
   
     database
-      .query("select * from users where id = ?", [id])
-      .then(([users]) => {
-        if (users[0] != null) {
-          res.json(users[0]);
+      .query("select * from user where id = ?", [id])
+      .then(([user]) => {
+        if (user[0] != null) {
+          res.json(user[0]);
         } else {
           res.status(404).send("Not Found");
         }

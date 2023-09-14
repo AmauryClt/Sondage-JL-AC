@@ -29,6 +29,12 @@ app.get("/api/user", usersHandlers.getUser);
 app.get("/api/user/:id", usersHandlers.getUserById);
 app.post("/api/user", usersHandlers.postUserCreation);
 
+const sondageHandlers = require("./sondageHandlers");
+
+app.get("/api/sondage", sondageHandlers.getSondage);
+app.get("/api/sondage/:id", sondageHandlers.getSondageById);
+app.post("/api/sondage", sondageHandlers.postSondageCreation);
+
 app.listen(port, (err) => {
   if (err) {
     console.error("Something bad happened");
