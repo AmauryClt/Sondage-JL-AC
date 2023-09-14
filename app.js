@@ -35,6 +35,11 @@ app.get("/api/sondage", sondageHandlers.getSondage);
 app.get("/api/sondage/:id", sondageHandlers.getSondageById);
 app.post("/api/sondage", sondageHandlers.postSondageCreation);
 
+const interaction = require("./interaction");
+
+app.post("/api/interaction", interaction.noteSondage);
+app.put("/api/interaction/:id", interaction.changeNoteSondage);
+
 app.listen(port, (err) => {
   if (err) {
     console.error("Something bad happened");
